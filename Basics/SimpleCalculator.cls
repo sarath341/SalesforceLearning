@@ -36,7 +36,7 @@ public class SimpleCalculator {
     
     //Method with Parameters and No Returntype(void)
     public void paraAdd(Integer a,Integer b){
-		Integer c=a+b;
+	Integer c=a+b;
         System.debug('Result of Add with Parameter: '+c);
     }
     
