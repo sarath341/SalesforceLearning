@@ -1,5 +1,7 @@
 //Create an instance of SimpleClaculator
 SimpleCalculator calc = new SimpleCalculator();
+
+//Call the methods using the created instance
 calc.add();
 calc.sub();
 calc.multiply();
