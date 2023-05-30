@@ -1,0 +1,16 @@
+//Use Execute Anonymous Window to debug the code
+//Create an instance of SimpleClaculator
+SimpleCalculator calc = new SimpleCalculator();
+calc.add();
+
+SimpleCalculator calc1 = new SimpleCalculator();
+calc1.sub();
+
+simplecalculator calc2 = new simplecalculator();
+calc2.multiply();
+
+simpleCalculator calc3 = new SimpleCalculator();
+calc3.divide();
+
+SimpleCalculator calc4 = new SimpleCalculator();
+calc4.paraAdd(5,5);
