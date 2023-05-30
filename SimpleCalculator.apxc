@@ -28,7 +28,7 @@ public class SimpleCalculator {
     }
     
     public void paraAdd(Integer a,Integer b){
-		Integer c=a+b;
+	Integer c=a+b;
         System.debug('Result of Add with Parameter: '+c);
     }
 }
