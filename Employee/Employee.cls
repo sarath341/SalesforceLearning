@@ -30,39 +30,94 @@ public class Employee {
     String empName;
     Integer empNo;
     Decimal empBasic;
-    
+    Decimal empHra;//15%
+    Decimal empDA;//10%
+    Decimal empPF;//Deduction 12%
+    Decimal empTax;//Deduction (Slabs)
+    Decimal empGross;//empBasic+empHra+empDA
+    Decimal netSal;//empBasic+empDA+-empTax-empPF
     //Instance Methods
-    //When the instance variables names and parameters names are samee, the instance variable
-    //will be hidden
+    //When the instance variables names and parameters names are same, the instance variable will be hidden
     //this is called as 'Instance variable Hiding'
     //To overcome from this issue, we have to use 'this' explicitly 
     public void setData(String empName, Integer empNo, Decimal empBasic){
         this.empName=empName;
         this.empNo = empNo;
         this.empBasic=empBasic;
+        System.debug('Set data as: '+empName+', '+empNo+', '+empBasic);
     }
-    private void displayData(){
-        System.debug(''+companyName);//Instance methods will have access to both static and non-static variables
-        System.debug(''+empName);
-        System.debug(''+empNo);
-        System.debug(''+empBasic);
+    public void displayData(){
+        System.debug('Company Name: '+companyName);//Instance methods will have access to both static and non-static variables
+        System.debug('Employee Name: '+empName);
+        System.debug('Employee No.: '+empNo);
+        System.debug('Basic Salary: '+empBasic);
+        HRA();
+        DA();
+        PF();
+        //gross();
+        Tax();
+        grossSal();//with returntype
+        netSal();//with returntype
     }
-    private void gross(){
-        
+
+    private void HRA(){
+        empHra=empBasic*0.1;
+        System.debug('HRA(10%) is: '+empHra);
     }
     private void DA(){
-        
+        empDA=empBasic*0.1;
+        System.debug('DA(10%) is: '+empDA);
     }
-    private void HRA(){
-        
-    }
+	//Deductions
     private void PF(){
-        
+        empPF=empBasic*0.12;
+        System.debug('PF(12%) is: '+empPF);
     }
-    private void Deductions(){
+    private void Tax(){
+        Decimal taxPercent;
+        if(empBasic<300000){
+            empTax=0;//Nil
+            taxPercent = 0;
+        }
+        else if(empBasic>300000 && empBasic<600000){
+        	empTax=(empBasic*0.05);//5%
+            taxPercent = 5;
+        }
+        else if(empBasic>600000 && empBasic<900000){
+        	//empTax=(empBasic*0.10);//10%
+            taxPercent = 10;
+            empTax=empBasic*(taxPercent/100);//10%
+        }
+        else if(empBasic>900000 && empBasic<1200000){
+        	empTax=(empBasic*0.15);//15%
+            taxPercent = 15;
+        }
+        else if(empBasic>1200000 && empBasic<1500000){
+        	empTax=(empBasic*0.20);//20%
+            taxPercent = 20;
+        }
+        else if (empBasic>1500000){
+        	empTax=(empBasic*0.30);//30%
+            taxPercent = 30;
+        }
         
+        System.debug('Tax is (Based on Slabs): '+empTax+' Tax % is:'+taxPercent+'%');
     }
-    private void Net(){
-        
+    
+    public Decimal grossSal(){
+      	Decimal grossVar = empBasic+empHra+empDA;
+        System.debug('Gross Salary is: '+grossVar);
+        return grossVar;
     }
+    public Decimal netSal(){
+      	Decimal netVar = empBasic+empHra+empDA+-empTax-empPF;
+        System.debug('Net Salary is: '+netVar);
+        return netVar;
+    }
+    /*
+    private void gross(){
+       empGross = empBasic+empHra+empDA-empPF;
+       System.debug('Gross is: '+empGross);
+    }
+    */
 }
