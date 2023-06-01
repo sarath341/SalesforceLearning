@@ -45,3 +45,13 @@ List<Account> accList = [SELECT Name, AnnualRevenue
 for(Account acc: accList){
     System.debug(acc.Name+' ' +acc.AnnualRevenue);
     }
+
+//Show High value Opportunities with Stage Closed Won
+List<Opportunity> oppList = [SELECT Name, StageName, CloseDate, Amount
+                         FROM Opportunity
+                         WHERE StageName = 'Closed Won'
+                         ORDER BY Amount DESC
+                         LIMIT 5];
+for(Opportunity opp: oppList){
+    System.debug(opp.Name+','+opp.StageName+',' + opp.Amount);
+    }
