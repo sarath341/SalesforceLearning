@@ -22,3 +22,26 @@ List<Account> accList = [SELECT Name, Type, Rating, Industry FROM Account];
 for(Account acc: accList){
     System.debug(acc.Name+' ' +acc.Type+' ' +acc.Rating+' ' +acc.Industry);
     }
+//Return a Single sObject
+Account acc = [SELECT Name FROM Account WHERE Id='0015i00000fonIqAAI'];
+System.debug(acc.Name);
+//Return an Integer
+Integer accCount = [SELECT count() FROM Account];
+System.debug(accCount);
+
+//Show only Account with Rating as'Hot' or AnnualRevenue>5M
+List<Account> accList = [SELECT Name, Type, Rating, Industry FROM Account WHERE Rating = 'Hot' OR AnnualRevenue<50000000];
+
+for(Account acc: accList){
+    System.debug(acc.Name+' ' +acc.Type+' ' +acc.Rating+' ' +acc.Industry);
+    }
+
+//Show top 5 Accounts based on Annual Revenue
+List<Account> accList = [SELECT Name, AnnualRevenue 
+                         FROM Account
+                         WHERE AnnualRevenue !=null
+                         ORDER BY AnnualRevenue DESC
+                         LIMIT 5];
+for(Account acc: accList){
+    System.debug(acc.Name+' ' +acc.AnnualRevenue);
+    }
