@@ -60,3 +60,33 @@ List<Case> caseList = [SELECT Id, CaseNumber, Status, Priority
 for(Case caseL:caseList){
     System.debug(caseL.CaseNumber+' '+caseL.Status+' '+caseL.Priority);
 }
+
+//Show the count of all the Accounts (including the one from recycle bin);
+Integer count = [SELECT count()
+                 FROM Account
+                 ALL ROWS];//All rows must be at the end
+System.debug(count);
+
+//Show the count of deleted Accounts (including records from recycle bin);
+Integer count = [SELECT count()
+                 FROM Account
+                 WHERE isDeleted = true
+                 ALL ROWS];
+System.debug(count);
+
+//SOSL - Salesforce Object Search Language
+List<List<sObject>> records = [FIND 'Acme*'
+                               RETURNING Opportunity(Name, StageName, CloseDate, Amount),
+                               Account (Name,Type,AnnualRevenue)];
+List<Opportunity> oppList = records[0];
+List<Account> accList = records[1];
+
+for(Opportunity opp: oppList){
+    System.debug('Opportunity Records: '+ opp.Name +', '+ opp.StageName+', '+opp.CloseDate+', '+opp.Amount);
+}
+for(Account acc: accList){
+    System.debug('Account Records: '+ acc.Name +', '+ acc.Type +', '+acc.AnnualRevenue);
+}
+
+
+
