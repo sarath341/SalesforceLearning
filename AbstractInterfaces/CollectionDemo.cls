@@ -1,5 +1,5 @@
 public class CollectionDemo {
-    //For static variable we don't need to create an instance variable instead call by Classname, Eg: classname.methodname()
+    //For static method we don't need to create an instance variable instead call by Classname, Eg: classname.methodname()
     public static void listDemo(){
         List<Integer> intList = new List<Integer>();
         intList.add(23);
