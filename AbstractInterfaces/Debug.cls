@@ -10,6 +10,7 @@ System.debug('Area of Rectangle '+ref.area());
 ref = new Triangle(100,200);
 System.debug('Area of Triangle '+ref.area());
 
+//For static method we don't need to create an instance variable instead call by Classname, Eg: classname.methodname()
 CollectionDemo.listDemo();
 CollectionDemo.setDemo();
 
