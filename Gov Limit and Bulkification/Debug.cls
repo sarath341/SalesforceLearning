@@ -88,5 +88,5 @@ for(Account acc: accList){
     System.debug('Account Records: '+ acc.Name +', '+ acc.Type +', '+acc.AnnualRevenue);
 }
 
-
+DMLDemo.databaseDMLDemo();
 
