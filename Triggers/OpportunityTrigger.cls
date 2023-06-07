@@ -1,9 +1,9 @@
 trigger OpportunityTrigger on Opportunity (after insert,after update, before delete, before update) {
-    
+    /*
     List<Opportunity> oppList = new List<Opportunity>();
     
-    //'isAfter' returns true if this trigger was fired after all records were saved.
-    //'isUpdate' Returns true if this trigger was fired due to an update operation, from the Salesforce user interface, Apex, or the API.
+    //'isAfter' Returns true if this trigger was fired after all records were saved.
+    //'isInsert' Returns true if this trigger was fired due to an insert operation, from the Salesforce user interface, Apex, or the API.
     if(Trigger.isAfter && Trigger.isInsert){
         for(Opportunity opp : Trigger.new){
             if(opp.StageName == 'Closed Won'){
@@ -23,6 +23,8 @@ trigger OpportunityTrigger on Opportunity (after insert,after update, before del
         }
         OpportunityTriggerHandler.postWonDealOnChatter(oppList);
     }
+*/
+    
     /*
     //'isDelete' Returns true if this trigger was fired due to a delete operation, from the Salesforce user interface, Apex, or the API.
     if(Trigger.isDelete){
@@ -35,14 +37,18 @@ trigger OpportunityTrigger on Opportunity (after insert,after update, before del
     }
 	*/
 //Prevent Changing the Closed Won Opportunities
-
+//isBefore - Returns true if this trigger was fired before any record was saved.
+//'isUpdate' Returns true if this trigger was fired due to an update operation, from the Salesforce user interface, Apex, or the API.
      if(Trigger.isBefore && Trigger.isUpdate){
+         OpportunityTriggerHandler.preventStageChange(Trigger.new,Trigger.oldMap);
+/*
         for(Opportunity opp : Trigger.new){
             Opportunity oldRecord = Trigger.oldMap.get(opp.Id);
             if(opp.StageName != 'Closed Won' && oldRecord.StageName == 'Closed Won'){
                 opp.StageName.addError('Closed Won Opportunities cannot be Modified');
             }//if
         }//for
+*/
     }//if
 /*
 if(Trigger.isAfter && Trigger.isInsert){
