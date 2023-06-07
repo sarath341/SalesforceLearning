@@ -5,8 +5,7 @@ public class OpportunityTriggerHandler {
                                            FROM CollaborationGroup 
                                            WHERE Name = 'All AW Computing'];
         List<FeedItem> chatterPostList = new List<FeedItem>();
-        for(Opportunity opp: oppList){
-            
+        for(Opportunity opp: oppList){            
             FeedItem chatterPost = new FeedItem();
             chatterPost.ParentId = chatterGroup.Id;
             chatterPost.Body = 'We are pleased to inform you that '+opp.Name+' has been Won '+
@@ -45,6 +44,7 @@ public class OpportunityTriggerHandler {
         List<Order> orderRefList= new List<Order>();
         
         for(Opportunity opp:oppList){
+            
             Opportunity oldRecord = oldMap.get(opp.Id);
             if(oldRecord.StageName != 'Closed Won' && opp.StageName == 'Closed Won'){
                 //Create an instance of the Order Record and populate the fields
@@ -140,4 +140,13 @@ public class OpportunityTriggerHandler {
             System.debug(ex.getMessage());
         }
     }//method
-}//Class
+    
+    public static void preventStageChange(List<Opportunity> oppList, Map<Id, Opportunity>oldMap){
+        for(Opportunity opp : oppList){
+            Opportunity oldRecord = oldMap.get(opp.Id);
+            if(opp.StageName != 'Closed Won' && oldRecord.StageName == 'Closed Won'){
+                opp.StageName.addError('Closed Won Opportunities cannot be Modified');
+            }
+        }
+    }//End of preventStageChange
+}//End of Class
