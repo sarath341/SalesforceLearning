@@ -3,11 +3,11 @@ public class PositionTriggerHandler {
     public static void followOnPositionInsert(List<Position__c> posList){
 
         List<EntitySubscription> entList = new List<EntitySubscription>();
-        for(Position__c ent: posList){
+        for(Position__c pos: posList){
             
             EntitySubscription entityInstance = new EntitySubscription();
-            entityInstance.ParentId = ent.Id;
-            entityInstance.SubscriberId = ent.Hiring_Manager__c;
+            entityInstance.ParentId = pos.Id;
+            entityInstance.SubscriberId = pos.Hiring_Manager__c;
             entList.add(entityInstance);
         }
         
@@ -24,10 +24,10 @@ public static void followOnPositionUpdate(List<Position__c> posList){
 
         List<EntitySubscription> entList = new List<EntitySubscription>();
         
-    	for(Position__c ent: posList){            
+    	for(Position__c pos: posList){            
             EntitySubscription entityInstance = new EntitySubscription();
-            entityInstance.ParentId = ent.Id;
-            entityInstance.SubscriberId = ent.Hiring_Manager__c;
+            entityInstance.ParentId = pos.Id;
+            entityInstance.SubscriberId = pos.Hiring_Manager__c;
             entList.add(entityInstance);
         }
         
