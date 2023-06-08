@@ -13,6 +13,7 @@ System.debug('Area of Triangle '+ref.area());
 //For static method we don't need to create an instance variable instead call by Classname, Eg: classname.methodname()
 CollectionDemo.listDemo();
 CollectionDemo.setDemo();
+CollectionDemo.mapDemo();
 
 //SOQL Queries
 //Square Bracketed Expression
