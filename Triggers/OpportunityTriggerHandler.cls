@@ -21,10 +21,9 @@ public class OpportunityTriggerHandler {
             chatterPost.Title = opp.Name; //Url Title with opportunity name
             chatterPostList.add(chatterPost); //Create a list one by one
         }
+        //Catch the exception if any or insert chatterPostList created
         try{
-            
             insert chatterPostList;
-            
         }
         catch (DmlException ex){
             System.debug(ex.getMessage());
