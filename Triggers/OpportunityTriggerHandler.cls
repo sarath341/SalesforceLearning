@@ -41,7 +41,7 @@ public class OpportunityTriggerHandler {
         }
         
         //Fire a query on account object and fetch both billing and shipping address details
-        //and store them in a map
+        //and store them in a map for Id in accIdSet of opportunities
         Map<Id,Account> accountMap = new Map<Id,Account>([SELECT Id, BillingStreet, BillingCity, 
                                                           BillingState, BillingPostalCode, BillingCountry, 
                                                           ShippingCity, ShippingStreet, ShippingState, 
