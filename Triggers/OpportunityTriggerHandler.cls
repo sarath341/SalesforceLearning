@@ -1,18 +1,25 @@
 public class OpportunityTriggerHandler {
-    
+    //Post Won deals on chatter
     public static void postWonDealOnChatter(List<Opportunity> oppList){
+        //Select All AW Computing Group
         CollaborationGroup chatterGroup = [SELECT Id 
                                            FROM CollaborationGroup 
                                            WHERE Name = 'All AW Computing'];
+        
+        //Create a feed item list called chatterPostList
         List<FeedItem> chatterPostList = new List<FeedItem>();
-        for(Opportunity opp: oppList){            
+        
+        //Traverse the Opportunity list passed from postWonDealOnChatter(oppList) method
+        for(Opportunity opp: oppList){
+         
+         //Create a feed item instance variable called chatterPost, set field values query (for All AW Computing ID) and set field values from opp traversing
             FeedItem chatterPost = new FeedItem();
-            chatterPost.ParentId = chatterGroup.Id;
+            chatterPost.ParentId = chatterGroup.Id; //Id of 'All AW Computing' from Query
             chatterPost.Body = 'We are pleased to inform you that '+opp.Name+' has been Won '+
                 ' and the Amount is '+ opp.Amount;
-            chatterPost.LinkUrl = '/'+opp.Id;
-            chatterPost.Title = opp.Name;
-            chatterPostList.add(chatterPost);
+            chatterPost.LinkUrl = '/'+opp.Id; //Populate the url with opportunity record ID
+            chatterPost.Title = opp.Name; //Url Title with opportunity name
+            chatterPostList.add(chatterPost); //Create a list one by one
         }
         try{
             
