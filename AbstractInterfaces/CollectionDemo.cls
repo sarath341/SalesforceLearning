@@ -1,5 +1,5 @@
 public class CollectionDemo {
-    //For static method we don't need to create an instance variable instead call by Classname, Eg: classname.methodname()
+    
     public static void listDemo(){
         List<Integer> intList = new List<Integer>();
         intList.add(23);
@@ -35,17 +35,26 @@ public class CollectionDemo {
         
         String key = 'street';
         if(addressMap.containsKey(key)){
-            System.debug(addressMap.get(key));
+            System.debug('addressMap get(key): '+addressMap.get(key));
         }
         else{
             System.Debug('Key not Found');
         }
+        
+        //To get keys from map, we use .keySet();
         Set<String> keys = addressMap.keySet();
+        
+        //To get keys from map, we use .values();
         List<String> valuesList = addressMap.values();
         
-        System.debug(addressMap);
-        System.debug(keys);
-        System.debug(valuesList);
+        //addressMap holds whole map values - addressMap: {city =New York, country =USA, street =Wall Street}
+        System.debug('addressMap: '+addressMap);
+        
+        //Keys: {city , country , street }
+        System.debug('keys: '+keys);
+        
+        //valuesList: (Wall Street, New York, USA)
+        System.debug('valuesList: '+valuesList);
         
         for(String x:addressMap.keySet()){
             System.debug(addressMap.get(x));
