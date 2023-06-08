@@ -35,6 +35,7 @@ public class OpportunityTriggerHandler {
         //Create a Set to store Account Id's of all the opportunities
         Set<Id> accIdSet = new Set<Id>();
         
+        //Traverse oppList parameter passed from createAnOrderForWonDealForUpdate() and store it in the set
         for(Opportunity opp:oppList){
             accIdSet.add(opp.AccountId);
         }
