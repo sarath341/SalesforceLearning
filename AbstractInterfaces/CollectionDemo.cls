@@ -56,6 +56,7 @@ public class CollectionDemo {
         //valuesList: (Wall Street, New York, USA)
         System.debug('valuesList: '+valuesList);
         
+        //Display values one by one by traverse keySet (returns all keys)
         for(String x:addressMap.keySet()){
             System.debug(addressMap.get(x));
         }
