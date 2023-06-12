@@ -1,0 +1,16 @@
+//Debug Ananymous Window
+//Create a sales message where account record type is customer account
+//1.Fetch Record Type ID of Customer Account from RecordType Object
+final String RECORD_TYPE_NAME = 'Customer Account';
+String varRecordTypeId = [SELECT Id
+                         FROM RecordType
+                         WHERE Name=:RECORD_TYPE_NAME][0].Id;
+List<Account> accList = new List<Account>();
+//Fetch all the Customer Account Records from Account Object
+for(Account acc:[SELECT Id
+                FROM Account
+                 WHERE RecordTypeId = :varRecordTypeId]){
+                     acc.Sales_Message__c = 'Avail 20% Discount on special occasion';
+                     accList.add(acc);
+                 }
+update accList;
