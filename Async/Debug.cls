@@ -1,6 +1,6 @@
 FutureDemo.getReady();
 FutureDemo.doBreakfast();
-FutureDemo.printPhotoAlbum();
+FutureDemo.printPhotoAlbum(); //A Future Method
 FutureDemo.doWork();
 
 List<Account> accList = new List<Account>();
