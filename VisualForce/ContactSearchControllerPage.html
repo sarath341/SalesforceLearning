@@ -1,0 +1,18 @@
+<apex:page controller="ContactSearchController" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock title="Contact Search Page">
+            <apex:pageBlockSection title="Search Input">
+                <apex:inputText value="{!searchText}" label="Search Text"/>
+                <apex:commandButton value="Search" action="{!doSearch}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Search Result">
+                <apex:pageBlockTable value="{!conList}" var="con">
+                	<apex:column value="{!con.FirstName}"/>
+                    <apex:column value="{!con.LastName}"/>
+                    <apex:column value="{!con.Email}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
