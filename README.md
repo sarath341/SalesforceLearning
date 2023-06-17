@@ -1,6 +1,6 @@
 # SalesforceLearning
-Author: Sarath Kumar
-Location: CCT Bengaluru
+<b>Author:</b> Sarath Kumar </br>
+Location: CCT Bengaluru</br>
 
 Note:
 To view this in a formatted I created in .cls and .html formats.
