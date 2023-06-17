@@ -11,6 +11,7 @@ Apex support .apxc, .apxt, .vfp. So it is recommended to create a class and copy
 <li>Basics</li>
 <li>Employee</li>
 <li>Abstract, Interfaces</li>
+ <li>Relationship Queries</li>
 <li>Governer Limits and Bulkification</li>
 <li>Triggers</li>
 <li>Test Classes</li>
