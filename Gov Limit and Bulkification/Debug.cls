@@ -78,8 +78,9 @@ System.debug(count);
 List<List<sObject>> records = [FIND 'Acme*'
                                RETURNING Opportunity(Name, StageName, CloseDate, Amount),
                                Account (Name,Type,AnnualRevenue)];
-List<Opportunity> oppList = records[0];
-List<Account> accList = records[1];
+//Whatever we are returning first, that will be on 0th index
+List<Opportunity> oppList = records[0]; //Returning first in query (0th Index)
+List<Account> accList = records[1]; //Returning 2nd in query (1st Index)
 
 for(Opportunity opp: oppList){
     System.debug('Opportunity Records: '+ opp.Name +', '+ opp.StageName+', '+opp.CloseDate+', '+opp.Amount);
