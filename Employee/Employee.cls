@@ -19,7 +19,7 @@ public class Employee {
     //method without returntype and parameters
 	
     //Class variables
-    static String companyName='CCT';
+    static String companyName='CCT'; //Static Variable (Accessible anywhere in the class)
     public static String getCompanyName(){
         //The below statement will lead to an error
         //Reason:
