@@ -6,3 +6,6 @@
 //Trigger.oldMap - Holds the 'Map of IDs' of Old Version of sObjects(Update, Delete)
 //IsInsert, IsUpdate, isDelete, isUndelete, isExecuting are Boolean Context var due to the specific operation
 //operationType - (System.TriggerOperation) can be used with 'Switch' statement based on programming Logic
+
+[Reference Document
+](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_context_variables.htm)
