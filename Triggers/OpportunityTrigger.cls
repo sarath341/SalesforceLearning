@@ -4,6 +4,8 @@
 //Trigger.newMap - Holds the 'Map of IDs' of new Version of sObjects(Before Update, After Insert, After Update, and After Undelete)
 //Trigger.old - List of Old Version of sObjects (Update, Delete)
 //Trigger.oldMap - Holds the 'Map of IDs' of Old Version of sObjects(Update, Delete)
+//IsInsert, IsUpdate, isDelete, isUndelete, isExecuting are Boolean Context var due to the specific operation
+//operationType - (System.TriggerOperation) can be used with 'Switch' statement based on programming Logic
 
 trigger OpportunityTrigger on Opportunity (after insert,after update, before delete, before update) {
     
