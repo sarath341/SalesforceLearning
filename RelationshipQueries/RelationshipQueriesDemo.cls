@@ -23,7 +23,7 @@ System.debug(con.FirstName + ' :: ' + con.LastName+ ':: '+con.AccountId +' :: '+
         
 //3.Fetch all the contact details who have related accounts (It must have an AccountID)
         List<Contact> conList = [SELECT FirstName, LastName, Account.Name, Account.Industry, Account.AnnualRevenue
-                                 FROM Contact WHERE AccountId =null];
+                                 FROM Contact WHERE AccountId !=null];
         for(Contact con : conList){
             System.debug(con.FirstName + ' :: ' + con.LastName+ ':: '+con.AccountId +' :: '+ con.Account.Name+ ' :: '+ con.Account.Industry + ' :: '+con.Account.AnnualRevenue);
         }
