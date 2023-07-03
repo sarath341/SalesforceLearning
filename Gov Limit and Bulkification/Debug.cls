@@ -67,7 +67,7 @@ Integer count = [SELECT count()
                  ALL ROWS];//All rows must be at the end
 System.debug(count);
 
-//Show the count of deleted Accounts (including records from recycle bin);
+//Show the count of deleted Accounts (in recycle bin);
 Integer count = [SELECT count()
                  FROM Account
                  WHERE isDeleted = true
