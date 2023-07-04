@@ -41,7 +41,9 @@ public with sharing class AccountTriggerHandler {
                                  FROM Account
                                  WHERE Id IN :newMap.keySet()];
         for(Account acc : accList){
+            if(acc.NumberOfEmployees >= 5000){
             acc.Rating = 'Hot';
+            }
         }
         update accList;
     }//End of updateAccountFieldsAfterInsert()
