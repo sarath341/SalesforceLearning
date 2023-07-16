@@ -1,4 +1,4 @@
-//Status not yet working
+//Status not yet working - Bulkification issue
 public with sharing class MaintenanceRequestHelper {
     
     public static void updateWorkOrders(Map<Id,Case> caseMap) {
