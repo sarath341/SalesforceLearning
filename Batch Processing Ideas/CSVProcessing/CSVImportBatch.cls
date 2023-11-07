@@ -55,6 +55,7 @@ public class CSVImportBatch implements Database.Batchable<String>, Database.Stat
         }
     }
 
+    //Fetch records for the passed SOQL Query and process the result in batched manner
     public static void processQuery(String soqlQuery) {
         // Define the batch size for query execution
         Integer batchSize = 200;
@@ -70,11 +71,12 @@ public class CSVImportBatch implements Database.Batchable<String>, Database.Stat
                 batchRecords.add(records[i]);
             }
 
-            // Process the batch of records
+            // Process the 1 batch of records. Add an additional parameter if needed to call different methods for business logic
             processUpdateBatch(batchRecords);
         }
     }
 
+    //Accepts any records and update based on its type (All records should be of same type at a time)
     private static void processUpdateBatch(List<SObject> records) {
         System.debug(records);
         String objectName = records[0].getSObjectType().getDescribe().getName();
@@ -95,5 +97,4 @@ public class CSVImportBatch implements Database.Batchable<String>, Database.Stat
         System.debug(Limits.getHeapSize());
         update accList;
     }
-
 }
