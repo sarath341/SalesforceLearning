@@ -1,6 +1,6 @@
 Integer batchSize = 200;
 List<Account> accList = [SELECT Id, Name, Industry FROM Account];
-//Batch For loop increments each iteration by batchSize (200)
+//Batch For loop - increments each iteration by batchSize (200)
 for (Integer startRow = 0; startRow < accList.size(); startRow += batchSize) {
     Integer endRow = Math.min(startRow + batchSize, accList.size());
     Integer startBatchTotal = startRow + batchSize;
